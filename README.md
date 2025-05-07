@@ -15,8 +15,8 @@ This repository presents the implementation of:
 
 | File                   | Description                        |
 | ---------------------- | ---------------------------------- |
-| `HW5_HaoChun_Shih.Rnw` | LaTeX + R analysis source          |
-| `HW5_HaoChun_Shih.pdf` | Compiled project report            |
+| `Multivariate-Risk-Modeling-and-Portfolio-Optimization.Rnw` | LaTeX + R analysis source          |
+| `Multivariate-Risk-Modeling-and-Portfolio-Optimization.pdf` | Compiled project report            |
 | `DowJones30.csv`       | 10-year DJIA stock log-return data |
 
 ---
@@ -117,19 +117,3 @@ tan_weights <- result$weights[idx_tan, ]
 
 ---
 
-## 📦 Required R Packages
-
-```r
-install.packages(c("quadprog", "mnormt", "knitr"))
-```
-
----
-
-## 👤 Author
-
-**Hao-Chun Shih**
-M.S. in Data Science, University of Michigan
-📧 [oscar10408@gmail.com](mailto:oscar10408@gmail.com)
-
-```
-```
