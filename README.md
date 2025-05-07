@@ -50,7 +50,7 @@ VaR_95 <- qt(0.05, df = nu_hat) * sqrt(t(w) %*% S %*% w) + t(w) %*% mu
 
 📊 **Result**:
 
-* VaR₀.₉₅ (daily) ≈ **1.49%**
+* VaR₉₅ (daily) ≈ **1.49%**
 
 ---
 
