@@ -27,6 +27,8 @@ This repository presents the implementation of:
 * Fit a multivariate **t-distribution** to the returns
 * Estimated the degrees of freedom ν via **profile likelihood**:
 
+<img src="Images/Short_Selling-1.png" width="500"/>
+
 ```r
 t.loglike <- function(dat, nu.range) {
   mu <- colMeans(dat)
@@ -101,6 +103,8 @@ plot(result$sig, vs, type = "l", col = "blue",
 ```
 
 ### 📍 Tangency Portfolio via Sharpe Ratio
+
+<img src="Images/optim_var-1.png" width="500"/>
 
 ```r
 rf <- 0.0001  # daily risk-free rate
