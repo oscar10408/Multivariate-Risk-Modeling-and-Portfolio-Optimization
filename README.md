@@ -129,6 +129,7 @@ plot(result$sig, vs, type = "l", col = "blue",
 #### ❌ No Short-Selling (Long-Only)
 
 <img src="Images/optim_var-1.png" width="500"/>
+
 | Stock 1 | 2      | 3      | 4      | 5      | 6      |
 |--------|--------|--------|--------|--------|--------|
 | 0.0322 | 0.0000 | 0.0000 | 0.0000 | 0.0000 | 0.1114 |
