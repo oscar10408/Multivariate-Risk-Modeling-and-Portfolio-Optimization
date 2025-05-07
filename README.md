@@ -7,7 +7,6 @@ This repository presents the implementation of:
 3. Efficient frontier construction with and without **short-selling**
 4. Tangency portfolio selection via **Sharpe ratio maximization**
 
-> 📘️ Project created for EECS 545 at the University of Michigan.
 
 ---
 
