@@ -206,3 +206,17 @@ tan_weights <- result$weights[idx_tan, ]
 
 ---
 
+### 🧠 Summary Takeaway:
+- ✅ **Multivariate t-distribution** accurately captures fat-tailed risk behavior in equity returns.
+- 📉 **VaR-based optimization** leads to practical risk-managed portfolios, especially under regulatory or institutional risk constraints.
+- 🚫 Short-selling restrictions **significantly limit** optimality, emphasizing the need to consider real-world trading limitations during allocation design.
+
+---
+
+## 💻 How to Compile
+
+To reproduce the report:
+
+1. Open `Multivariate-Risk-Modeling-and-Portfolio-Optimization.Rnw` in **RStudio**
+2. Set knitting engine to **knitr**
+3. Click **Knit to PDF**
