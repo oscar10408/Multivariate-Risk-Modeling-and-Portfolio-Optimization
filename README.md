@@ -7,6 +7,63 @@ This repository presents the implementation of:
 3. Efficient frontier construction with and without **short-selling**
 4. Tangency portfolio selection via **Sharpe ratio maximization**
 
+---
+## 🧮 Sample Code
+
+```r
+library(mnormt)
+
+t.loglike <- function(dat, nu.range) {
+  mu <- colMeans(dat)
+  Sig <- cov(dat)
+  sapply(nu.range, function(nu) {
+    sum(log(dmt(dat, mean = mu, S = Sig * (nu - 2) / nu, df = nu)))
+  })
+}
+
+nu.grid <- seq(3, 10, 0.1)
+loglik <- t.loglike(returns_matrix, nu.grid)
+nu_hat <- nu.grid[which.max(loglik)]
+
+w <- rep(1/ncol(returns_matrix), ncol(returns_matrix))
+S <- cov(returns_matrix)
+mu <- colMeans(returns_matrix)
+
+VaR_95 <- qt(0.05, df = nu_hat) * sqrt(t(w) %*% S %*% w) + t(w) %*% mu
+
+library(quadprog)
+
+vs <- seq(0.001, 0.65, by = 0.001) / 365
+
+optimization_weight <- function(vs) {
+  sigmas <- numeric(length(vs))
+  weights <- matrix(0, nrow = length(vs), ncol = ncol(ret))
+
+  for (i in seq_along(vs)) {
+    v <- vs[i]
+    Dmat <- 2 * cov(ret)
+    dvec <- rep(0, ncol(ret))
+    Amat <- cbind(rep(1, ncol(ret)), colMeans(ret))
+    bvec <- c(1, v)
+    res <- solve.QP(Dmat, dvec, Amat, bvec, meq = 2)
+    weights[i, ] <- res$solution
+    sigmas[i] <- sqrt(t(res$solution) %*% cov(ret) %*% res$solution)
+  }
+
+  list(sig = sigmas, weights = weights)
+}
+
+result <- optimization_weight(vs)
+
+rf <- 0.0001
+Sharpe <- (vs - rf) / result$sig
+idx_tan <- which.max(Sharpe)
+tan_weights <- result$weights[idx_tan, ]
+
+plot(result$sig, vs, type = "l", col = "blue",
+     xlab = "Volatility", ylab = "Expected Return")
+points(result$sig[idx_tan], vs[idx_tan], col = "red", pch = 19)
+```
 
 ---
 
